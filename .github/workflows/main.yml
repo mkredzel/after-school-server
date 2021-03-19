@@ -21,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Add env var MONGO_DB
-      run: node server.js
       env: # Or as an environment variable
         MONGO_DB: ${{ secrets.MONGO_DB }}
 
