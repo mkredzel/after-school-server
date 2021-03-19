@@ -4,24 +4,30 @@ name: CI
 
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    branches: [ main ]
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  github-actions-environment-variables-ubuntu:
     runs-on: ubuntu-latest
     steps:
-    - name: Add env var MONGO_DB
-      env: # Or as an environment variable
-        MONGO_DB: ${{ secrets.MONGO_DB }}
+     - name: Run with env var
+       run: server.js
+       env: 
+        MONGO_DB: ${{ secrets.MONGO_DB }} 
 
-     
+  github-actions-environment-variables-windows:
+    runs-on: windows-latest
+    steps:
+     - name: Run with env var
+       run: server.js
+       env: 
+        MONGO_DB: ${{ secrets.MONGO_DB }} 
+
+  github-actions-environment-variables-macos:
+    runs-on: macos-latest
+    steps:
+     - name: Run with env var
+       run: server.js
+       env: 
+        MONGO_DB: ${{ secrets.MONGO_DB }} 
+      
